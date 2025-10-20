@@ -21,7 +21,6 @@ setup(
         scipy
         pandas
         nltk
-        rdkit-pypi
         transformers
         matplotlib
         torch
