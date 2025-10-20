@@ -28,7 +28,11 @@ class Pretrained(DotProduct):
         
         super().__init__(**hp)
 
-        cp = torch.load(self.checkpoint, map_location=device)
+        cp = torch.load(
+            self.checkpoint,
+            map_location=self.device,
+            weights_only=False  # new PyTorch arg; set to True if only loading weights
+        )
         self.load_state_dict(cp['model_state_dict'], strict=False)
         logger.info(f"Loaded pretrained model from {self.checkpoint}")
 
